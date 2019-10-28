@@ -1,0 +1,1 @@
+set( CMAKE_TOOLCHAIN_FILE "${CMAKE_CONFIG_DIR}/toolchain/gccarmemb.cmake" CACHE PATH "toolchain file" )

@@ -1,0 +1,1 @@
+ set(PLATFORM "nrf52832_xxAA" CACHE STRING "Choose the target platform to build for. Use \"host\" for unit test builds.")
