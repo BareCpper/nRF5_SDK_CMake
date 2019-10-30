@@ -44,11 +44,7 @@ target_sources( nRF5_SDK
 		"${nRF5_SDK_ROOT}/components/libraries/util/app_error_weak.c"
 		"${nRF5_SDK_ROOT}/components/libraries/util/app_util_platform.c"
 		"${nRF5_SDK_ROOT}/components/libraries/util/app_error_handler_gcc.c"
-
-		#${nRF5_SDK_ROOT}/modules/nrfx/mdk/gcc_startup_nrf52840.S
-		#"${nRF5_SDK_ROOT}/components/libraries/bsp/bsp.c"
 		"${nRF5_SDK_ROOT}/components/boards/boards.c"
-		#"${nRF5_SDK_ROOT}/components/libraries/timer/app_timer2.c"
 )
 
 add_dependencies( nRF5_SDK 
@@ -57,8 +53,8 @@ add_dependencies( nRF5_SDK
 
 target_link_libraries( nRF5_SDK 
 PUBLIC
-	${BOARD}
 	${SOFTDEVICE}
+	${BOARD}
 )
 
 set_source_files_properties(

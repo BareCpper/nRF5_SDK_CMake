@@ -25,11 +25,6 @@ target_include_directories( nrf52832_xxAA
 	)
 #endif()
 
-#target_link_directories( nrf52832_xxAA 
-#	PUBLIC
-#		"${nRF5_SDK_ROOT}/modules/nrfx/mdk" 
-#)
-
 target_link_libraries( nrf52832_xxAA 
 	PUBLIC
 		${nrf52832_xxAA_ARCH}

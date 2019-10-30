@@ -1,10 +1,4 @@
-﻿# CMakeList.txt : CMake project for emteq-vr, include source and define
-# project specific logic here.
-#
-cmake_minimum_required (VERSION 3.8)
-
-set( PROJECT_DIR ${CMAKE_CURRENT_LIST_DIR} )
-
+﻿
 # Add source to this project's executable.
 add_executable( emteq-vr-usb )
 add_executable(Emteq::Vr::Firmware ALIAS emteq-vr-usb)
@@ -12,15 +6,16 @@ add_executable(Emteq::Vr::Firmware ALIAS emteq-vr-usb)
 # Based off:${nRF5_nRF5_SDK_ROOT}\nRF5_SDK_16.0.0_98a08e2\examples\peripheral\serial\pca10056\blank\armgcc\makefile
 target_include_directories( emteq-vr-usb
   PRIVATE
-	${PROJECT_DIR} 	
+	${CMAKE_CURRENT_LIST_DIR} 	
 )
 
 target_sources( emteq-vr-usb 
     PRIVATE 
-        ${PROJECT_DIR}/emteq-vr.h
-        ${PROJECT_DIR}/emteq-vr.c
+        ${CMAKE_CURRENT_LIST_DIR}/emteq-vr.h
+        ${CMAKE_CURRENT_LIST_DIR}/emteq-vr.c
 )
 
+### @todo These should all be in a dependent library as part of nRF5_SDK or sub-module etc!!!
 target_sources( emteq-vr-usb 
     PRIVATE 
   ${nRF5_SDK_ROOT}/components/libraries/log/src/nrf_log_frontend.c 
@@ -41,13 +36,15 @@ target_sources( emteq-vr-usb
 
 target_link_libraries( emteq-vr-usb 
 PUBLIC
-	nRF5_SDK
+	${PLATFORM}
 	${SOFTDEVICE}
+	nRF5_SDK
 )
 
-set_target_properties(emteq-vr-usb PROPERTIES LINK_DEPENDS ${PROJECT_DIR}/emteqvr_gcc_nrf52.ld )
-
-set_target_link_options( emteq-vr-usb )
+target_link_options( emteq-vr-usb PRIVATE 
+	-L${nRF5_SDK_ROOT}/modules/nrfx/mdk
+	-T${CMAKE_CURRENT_LIST_DIR}/emteqvr_gcc_nrf52.ld
+)
 
 create_hex( emteq-vr-usb )
 add_flash_target( emteq-vr-usb )

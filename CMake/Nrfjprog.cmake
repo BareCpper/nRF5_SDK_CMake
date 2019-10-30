@@ -13,12 +13,8 @@ if (NRFJPROG AND MERGEHEX )
             DEPENDS ${CMAKE_CURRENT_BINARY_DIR}/${target}_merged.hex)
 
         add_dependencies(merge merge_${target})
-
-	#@echo Flashing: s132_nrf52_7.0.1_softdevice.hex
-	#nrfjprog -f nrf52 --program $(SDK_ROOT)/components/softdevice/s132/hex/s132_nrf52_7.0.1_softdevice.hex --sectorerase
-	#nrfjprog -f nrf52 --reset
-			
-        add_custom_target(flash_${target}
+					
+        add_custom_target(flash_${target} ALL
             COMMAND ${NRFJPROG} -f nrf52 --program "${CMAKE_CURRENT_BINARY_DIR}/${target}_merged.hex" --sectorerase
             COMMAND ${NRFJPROG} -f nrf52 --reset
             USES_TERMINAL
