@@ -38,7 +38,6 @@ target_compile_definitions(nrf52832_xxAA
 		FLOAT_ABI_HARD
 )
 
-set_source_files_properties(
-	${nrf52832_xxAA_SOURCE_FILES}
-		PROPERTIES GENERATED 1)
+get_target_property(nrf52832_xxAA_SOURCE_FILES nrf52832_xxAA SOURCES)
+set_source_files_properties( ${nrf52832_xxAA_SOURCE_FILES} PROPERTIES GENERATED 1)
 

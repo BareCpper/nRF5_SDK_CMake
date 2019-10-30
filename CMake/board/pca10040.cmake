@@ -22,3 +22,6 @@ target_link_libraries( pca10040
 PUBLIC
 	${PLATFORM} 
 )
+
+get_target_property(pca10040_SOURCE_FILES pca10040 SOURCES)
+set_source_files_properties( ${pca10040_SOURCE_FILES} PROPERTIES GENERATED 1)

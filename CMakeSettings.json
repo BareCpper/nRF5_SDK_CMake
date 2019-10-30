@@ -34,16 +34,6 @@
           "type": "STRING"
         },
         {
-          "name": "CMAKE_C_FLAGS",
-          "value": " -mcpu=cortex-m4 -mthumb -mabi=aapcs -mfloat-abi=hard -mfpu=fpv4-sp-d16",
-          "type": "STRING"
-        },
-        {
-          "name": "CMAKE_CXX_FLAGS",
-          "value": "-mcpu=cortex-m4 -mthumb -mabi=aapcs -mfloat-abi=hard -mfpu=fpv4-sp-d16",
-          "type": "STRING"
-        },
-        {
           "name": "CMAKE_CXX_STANDARD",
           "value": "14",
           "type": "STRING"

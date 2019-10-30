@@ -38,8 +38,3 @@ target_link_libraries( ${softdevice_ID}
 INTERFACE
 	${BOARD} 
 )
-
-#REF:@ ASMFLAGS += -DNRF_SD_BLE_API_VERSION=7
-#		S132 # Soft device
-#REF:@ ASMFLAGS += -DS132
-#REF:@ ASMFLAGS += -DSOFTDEVICE_PRESENT

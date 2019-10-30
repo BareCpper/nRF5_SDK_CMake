@@ -47,6 +47,27 @@ target_sources( nRF5_SDK
 		"${nRF5_SDK_ROOT}/components/boards/boards.c"
 )
 
+
+### @todo These should all be in a dependent library as part of nRF5_SDK or sub-module etc!!!
+target_sources( nRF5_SDK
+    PRIVATE 
+  ${nRF5_SDK_ROOT}/components/libraries/log/src/nrf_log_frontend.c 
+  ${nRF5_SDK_ROOT}/components/libraries/log/src/nrf_log_str_formatter.c   
+  ${nRF5_SDK_ROOT}/components/libraries/util/nrf_assert.c 
+  ${nRF5_SDK_ROOT}/components/libraries/atomic/nrf_atomic.c 
+  ${nRF5_SDK_ROOT}/components/libraries/balloc/nrf_balloc.c 
+  ${nRF5_SDK_ROOT}/external/fprintf/nrf_fprintf.c 
+  ${nRF5_SDK_ROOT}/external/fprintf/nrf_fprintf_format.c
+  ${nRF5_SDK_ROOT}/components/libraries/memobj/nrf_memobj.c
+  ${nRF5_SDK_ROOT}/components/libraries/ringbuf/nrf_ringbuf.c
+  ${nRF5_SDK_ROOT}/components/libraries/experimental_section_vars/nrf_section_iter.c
+  ${nRF5_SDK_ROOT}/components/libraries/strerror/nrf_strerror.c
+  ${nRF5_SDK_ROOT}/modules/nrfx/soc/nrfx_atomic.c
+  ${nRF5_SDK_ROOT}/components/softdevice/common/nrf_sdh.c
+  ${nRF5_SDK_ROOT}/components/softdevice/common/nrf_sdh_soc.c
+  )
+
+
 add_dependencies( nRF5_SDK 
 	nRF5_SDK_Get
 )
@@ -57,6 +78,5 @@ PUBLIC
 	${BOARD}
 )
 
-set_source_files_properties(
-	${nRF5_SDK_SOURCE_FILES}
-		PROPERTIES GENERATED 1)
+get_target_property(nRF5_SDK_SOURCE_FILES nRF5_SDK SOURCES)
+set_source_files_properties( ${nRF5_SDK_SOURCE_FILES} PROPERTIES GENERATED 1)
