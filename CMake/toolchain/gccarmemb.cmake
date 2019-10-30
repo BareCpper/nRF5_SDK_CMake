@@ -37,13 +37,13 @@ set(CMAKE_SIZE_UTIL ${TOOLCHAIN_ROOT}/bin/${TOOLCHAIN_TARGET}-size CACHE INTERNA
 
 # Assembler flags common to all targets
 
-set(all_flags "-g3 -Wall") #-O3   -Wextra
-set(data_flags "-ffunction-sections -fdata-sections -fno-strict-aliasing -fno-builtin --short-enums")
-set(warning_flags "-Wall -Wno-attributes -Wno-format")
-
+set(all_flags "-MP -MD -O3 -g3  -D__HEAP_SIZE=8192 -D__STACK_SIZE=8192") #-O3   -Wextra
+set(data_flags "-ffunction-sections -fdata-sections -fno-strict-aliasing -fno-builtin -fshort-enums")
+set(warning_flags "-Wall -Werror") #-Wno-attributes -Wno-format
 SET(ARCH_FLAGS "-mcpu=cortex-m4 -mthumb -mabi=aapcs -mfloat-abi=hard -mfpu=fpv4-sp-d16")
-SET(CMAKE_C_FLAGS "--std=gnu99 ${all_flags} ${warning_flags} ${data_flags} ${ARCH_FLAGS}" CACHE STRING "Common flags for C compiler")
-SET(CMAKE_ASM_FLAGS "${CMAKE_C_FLAGS}" )
+
+SET(CMAKE_C_FLAGS "-std=c99 ${all_flags} ${warning_flags} ${data_flags} ${ARCH_FLAGS}" CACHE STRING "Common flags for C compiler")
+SET(CMAKE_ASM_FLAGS "-x assembler-with-cpp ${CMAKE_C_FLAGS}" )
 SET(CMAKE_CXX_FLAGS "-std=c++14 -fno-exceptions -fno-threadsafe-statics  ${all_flags} ${warning_flags} ${data_flags} ${ARCH_FLAGS}" CACHE STRING "Common flags for C++ compiler")
 SET(CMAKE_EXE_LINKER_FLAGS "-L$(nRF5_SDK_ROOT)/modules/nrfx/mdk -lm ${ARCH_FLAGS} -Wl,--gc-sections --specs=nano.specs --specs=nosys.specs" )
 

@@ -7,7 +7,7 @@ INTERFACE
 	"${nRF5_SDK_ROOT}/components"
 	"${nRF5_SDK_ROOT}/modules/nrfx/mdk" 
 	"${nRF5_SDK_ROOT}/components/boards"
-	"${nRF5_SDK_ROOT}/components/libraries/scheduler "
+	"${nRF5_SDK_ROOT}/components/libraries/scheduler"
 	"${nRF5_SDK_ROOT}/components/libraries/queue"
 	"${nRF5_SDK_ROOT}/components/libraries/timer"
 	"${nRF5_SDK_ROOT}/components/libraries/strerror"
