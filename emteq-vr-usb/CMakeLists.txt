@@ -24,12 +24,7 @@ target_sources( emteq-vr-usb
 target_sources( emteq-vr-usb 
     PRIVATE 
   ${nRF5_SDK_ROOT}/components/libraries/log/src/nrf_log_frontend.c 
-  ${nRF5_SDK_ROOT}/components/libraries/log/src/nrf_log_str_formatter.c 
-  ${nRF5_SDK_ROOT}/components/boards/boards.c 
-  ${nRF5_SDK_ROOT}/components/libraries/util/app_error.c 
-  ${nRF5_SDK_ROOT}/components/libraries/util/app_error_handler_gcc.c 
-  ${nRF5_SDK_ROOT}/components/libraries/util/app_error_weak.c 
-  ${nRF5_SDK_ROOT}/components/libraries/util/app_util_platform.c 
+  ${nRF5_SDK_ROOT}/components/libraries/log/src/nrf_log_str_formatter.c   
   ${nRF5_SDK_ROOT}/components/libraries/util/nrf_assert.c 
   ${nRF5_SDK_ROOT}/components/libraries/atomic/nrf_atomic.c 
   ${nRF5_SDK_ROOT}/components/libraries/balloc/nrf_balloc.c 

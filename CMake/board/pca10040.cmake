@@ -1,19 +1,24 @@
 
-add_library( pca10040 INTERFACE )
+add_library( pca10040 )
 
 target_include_directories( pca10040 
-INTERFACE
-    "${SDK_ROOT}/components/boards"
+	PUBLIC 
+		"${SDK_ROOT}/components/boards"
 )
 
 target_compile_definitions(pca10040
-	INTERFACE
+	PUBLIC
 		BOARD_PCA10040
 		CONFIG_GPIO_AS_PINRESET
 		BSP_DEFINES_ONLY # @todo What?
 )
 
+target_sources( pca10040
+    PRIVATE 
+		"${nRF5_SDK_ROOT}/modules/nrfx/mdk/system_nrf52.c"
+)
+
 target_link_libraries( pca10040 
-INTERFACE
+PUBLIC
 	${PLATFORM} 
 )

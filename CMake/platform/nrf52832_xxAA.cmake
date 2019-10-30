@@ -4,10 +4,6 @@ add_library(nrf52832_xxAA )
 set(nrf52832_xxAA_ARCH "cortex-m4f")
 set(nrf52832_xxAA_FAMILY "NRF52")
 
-target_sources( nrf52832_xxAA
-    PRIVATE 
-		"${nRF5_SDK_ROOT}/modules/nrfx/mdk/system_nrf52.c"
-)
 
 target_include_directories( nrf52832_xxAA 
 	PUBLIC
