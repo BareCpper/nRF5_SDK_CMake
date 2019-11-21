@@ -7,6 +7,7 @@ Pre-requisites:
 
 Build and flash
 -----------------------
+
 ```
 mkdir build
 cd build
