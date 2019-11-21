@@ -4,7 +4,8 @@
 # @ref https://github.com/NordicSemiconductor/nRF5-SDK-for-Mesh
 
 
-cmake_minimum_required (VERSION 3.13)
+# @note 3.13 due to errors recognising compiler in 3.12?
+cmake_minimum_required (VERSION 3.13) 
 
 set( CMAKE_TOOLCHAIN_FILE "${CMAKE_CURRENT_SOURCE_DIR}/CMake/toolchain/gccarmemb.cmake"  )
 include("${CMAKE_TOOLCHAIN_FILE}")
@@ -40,4 +41,4 @@ include("${CMAKE_CONFIG_DIR}/Nrfjprog.cmake") # @note Target flashing only
 
 
 # Include sub-projects.
-add_subdirectory ("emteq-vr-usb")
+add_subdirectory ("test_app1")

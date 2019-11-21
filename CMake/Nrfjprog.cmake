@@ -34,8 +34,8 @@ if (NRFJPROG AND MERGEHEX )
     endfunction(add_flash_target)
 else ()
     message(STATUS "Could not find nRFx command line tools (`nrfjprog` and `mergehex`).
-   See http://infocenter.nordicsemi.com/topic/com.nordic.infocenter.tools/dita/tools/nrf5x_command_line_tools/nrf5x_installation.html?cp=5_1_1.
-   Flash target will not be supported.")
+   See https://www.nordicsemi.com/Software-and-tools/Development-Tools/nRF-Command-Line-Tools/Download
+   You may still compile binary images but Flash target will not be supported.")
     function(add_flash_target target)
         # Not supported
     endfunction(add_flash_target)

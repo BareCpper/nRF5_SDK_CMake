@@ -1,10 +1,4 @@
-﻿// emteq-vr.cpp : Defines the entry point for the application.
-//
-
-#include "emteq-vr.h"
-
-//#include "..\3rd_party\nRF5_SDK_16.0.0_98a08e2\components\libraries\delay\nrf_delay.h"
-//#include "..\3rd_party\nRF5_SDK_16.0.0_98a08e2\components\boards\boards.h"
+﻿// @note nRF52 SDK Blink example
 
 /**
  * @brief Function for application main entry.
