@@ -8,8 +8,11 @@
 
 * Ninja
     - Download and install Ninja https://github.com/ninja-build/ninja/releases/latest
-    - You’ll need to add it to the system path manually. 
+    - You’ll need to add it to the system 'PATH' environment path manually to point to the directory you extract it to. 
 
+* Make
+    - Download and install GNU Make tools (Windows download http://gnuwin32.sourceforge.net/packages/make.htm)
+    - You’ll need to add it to the system 'PATH' environment path manually to add "C:\Program Files (x86)\GnuWin32\bin" on windows
    
 # Install platform-tools
 -----------------------
@@ -21,7 +24,7 @@
 * GNU Tools for ARM Embedded Processors
     - Download compiler tools for ARM https://developer.arm.com/tools-and-software/open-source-software/developer-tools/gnu-toolchain/gnu-rm/downloads
 (e.g. Windows users download 'gcc-arm-none-eabi-9-2019-q4-major-win32.exe')
-    - Install as defaults but we recommend you check option to **'Add path to environment variable'**
+    - Install as defaults but we recommend you check option to 'Add path to environment variable'
  
  ~@todo Make GNU tools automated download/docker dependency~
     
@@ -53,4 +56,19 @@ PLATFORM(nrf52832_xxAA)
          |
   ARCH(cortex-m4f)
 ```
-               
+
+# Troubleshooting
+
+## undefined reference to `SystemInit'
+* During link of application i.e nrf52_Test_App1
+* gcc_startup_nrf52.S ASM file references function called 'SystemInit' which is not part of the build
+```
+$GNU Tools/.../bin/../lib/gcc/arm-none-eabi/9.2.1/../../../../arm-none-eabi/bin/ld.exe: ../libnrf52832_xxAA.a(gcc_startup_nrf52.S.obj): in function `Reset_Handler':
+$nRF5_SDK_16.0.0_98a08e2/modules/nrfx/mdk/gcc_startup_nrf52.S:272: undefined reference to `SystemInit'
+```
+### Problem
+This issue occurs due to the order of linker library includesn not being correctly ordered by Cmake at this time i.e. They should be listed in the order that the library link-dependencies are specified (Use -v for verbose build output)
+../libnrf52832_xxAA.a ../libpca10040.a ../libnRF5_SDK.a
+
+### Solution
+**WIP**

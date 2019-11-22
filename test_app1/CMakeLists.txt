@@ -16,9 +16,9 @@ target_sources( nrf52_Test_App1
 
 target_link_libraries( nrf52_Test_App1 
 PUBLIC
-    nRF5_SDK
 	#${PLATFORM}
 	#${SOFTDEVICE}
+    nRF5_SDK
 	
 )
 
