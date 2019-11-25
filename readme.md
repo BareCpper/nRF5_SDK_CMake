@@ -16,10 +16,6 @@
    
 # Install platform-tools
 -----------------------
-* [Optional] nRF Command Line Tools ('nrfjprog' and 'mergehex')
-    - https://www.nordicsemi.com/Software-and-tools/Development-Tools/nRF-Command-Line-Tools/Download
-    - Required if you wish to flash firmware, you may compile firmware withtout installing these tools.
-    - Recommend choosing '64bit' platform version from list on left. 
 
 * GNU Tools for ARM Embedded Processors
     - Download compiler tools for ARM https://developer.arm.com/tools-and-software/open-source-software/developer-tools/gnu-toolchain/gnu-rm/downloads
@@ -31,8 +27,25 @@
  * Nordic nRF52 SDK is automatically downloaded from the Cmake, if you have it pre-installed define environment variable nRF5_SDK_ROOT={path-to-SDK}
  
  
+# Install programming-tools
+
+## Serial DFU
+* SiLabs CP2104 driver
+    - Download driver http://www.silabs.com/products/mcu/pages/usbtouartbridgevcpdrivers.aspx is required for USB to Serial when using with Feather nRF52832
+    
+* nrfutil Firmware Update Tools
+    - Windows prebuilt executable here https://github.com/NordicSemiconductor/pc-nrfutil/releases/tag/v5.2.0 add this to your path environment (e.g. Copy into to C:\Program Files\Nordic Semiconductor\nrf-command-line-tools\bin)
+    - Python setup procedure documented https://github.com/NordicSemiconductor/pc-nrfutil#installing-from-pypi (Link to installing PIP is in chapter below)
+ 
+* [ WIP ] Adafruit https://github.com/adafruit/Adafruit_nRF52_nrfutil/releases
+
+## JTag FLash
+* nRF Command Line Tools ('nrfjprog' and 'mergehex')
+    - https://www.nordicsemi.com/Software-and-tools/Development-Tools/nRF-Command-Line-Tools/Download
+    - Required if you wish to flash firmware, you may compile firmware withtout installing these tools.
+    - Recommend choosing '64bit' platform version from list on left. 
+    
 # Build
------------------------
 
 ## Powershell: 
 
@@ -41,6 +54,25 @@ mkdir -p build
 cd build
 cmake -G Ninja ..
 cmake --build . --target flash_nrf52_Test_App1
+```
+
+# Program
+## JTag Flash
+Each executable shall have an associated target 'flash_*' 
+
+## DFU
+@todo Make CMake target
+Example flashing BOTH SoftDevice+Application command to package and flash the 'merge' binary
+```
+cmake --build . -t merge
+nrfutil pkg generate --hw-version 52 --sd-req 0x80 --application-version 4 --application test_app1/test_app1_merged.hex dfu_test.zip
+nrfutil dfu serial -pkg dfu_test.zip -p COM3
+```
+... Or Adafruit tool:
+```
+cmake --build . -t merge
+adafruit-nrfutil dfu genpkg --dev-type 0x0052 --application test_app1/test_app1_merged.hex dfu_test.zip
+adafruit-nrfutil dfu serial --package dfu_test.zip -p COM3 -b 115200
 ```
 
 
