@@ -15,8 +15,8 @@ target_include_directories( nrf52832_xxAA
 
 #if (TOOLCHAIN MATCHES "gcc" OR TOOLCHAIN STREQUAL "clang")
 	target_sources( nrf52832_xxAA
-		PRIVATE 
-		 "${nRF5_SDK_ROOT}/modules/nrfx/mdk/gcc_startup_nrf52.S"
+		PUBLIC 
+		 "${nRF5_SDK_ROOT}/modules/nrfx/mdk/gcc_startup_nrf52.S" # gcc_startup_nrf52.S must be PUBLIC as depends on the 'SystemInit' specified by BOARD (i.e. system_nrf52.c)
 	)
 	target_include_directories( nrf52832_xxAA 
 		PRIVATE

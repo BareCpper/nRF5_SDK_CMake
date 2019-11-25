@@ -18,6 +18,11 @@ CTestTestfile.cmake
 *.lo
 *.o
 *.obj
+obj/
+bin/
+build/
+out/
+
 
 # Precompiled Headers
 *.gch

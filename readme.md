@@ -59,7 +59,7 @@ PLATFORM(nrf52832_xxAA)
 
 # Troubleshooting
 
-## undefined reference to `SystemInit'
+## Undefined reference to `SystemInit'
 * During link of application i.e nrf52_Test_App1
 * gcc_startup_nrf52.S ASM file references function called 'SystemInit' which is not part of the build
 ```
@@ -67,8 +67,7 @@ $GNU Tools/.../bin/../lib/gcc/arm-none-eabi/9.2.1/../../../../arm-none-eabi/bin/
 $nRF5_SDK_16.0.0_98a08e2/modules/nrfx/mdk/gcc_startup_nrf52.S:272: undefined reference to `SystemInit'
 ```
 ### Problem
-This issue occurs due to the order of linker library includesn not being correctly ordered by Cmake at this time i.e. They should be listed in the order that the library link-dependencies are specified (Use -v for verbose build output)
-../libnrf52832_xxAA.a ../libpca10040.a ../libnRF5_SDK.a
+PLATFORM (e.g. nrf52832_xxAA) links in gcc_startup_nrf52.S for startup sequence but depends on the 'SystemInit' function that is defined  system_nrf52.c by the BOARD (e.g. pca10040)
 
 ### Solution
-**WIP**
+PLATFORM shall supply gcc_startup_nrf52.S as PUBLIC for linkage further up the dependency chain.

@@ -31,7 +31,7 @@ SET(ARCH_FLAGS "-mcpu=cortex-m4 -mthumb -mabi=aapcs -mfloat-abi=hard -mfpu=fpv4-
 SET(CMAKE_C_FLAGS "-std=c99 ${all_flags} ${warning_flags} ${data_flags} ${ARCH_FLAGS}" CACHE STRING "Common flags for C compiler")
 SET(CMAKE_ASM_FLAGS "-x assembler-with-cpp ${CMAKE_C_FLAGS}" )
 SET(CMAKE_CXX_FLAGS "-std=c++14 -fno-exceptions -fno-threadsafe-statics  ${all_flags} ${warning_flags} ${data_flags} ${ARCH_FLAGS}" CACHE STRING "Common flags for C++ compiler")
-SET(CMAKE_EXE_LINKER_FLAGS "-lm ${ARCH_FLAGS} -Wl,--gc-sections --specs=nano.specs --specs=nosys.specs -Wl,-Map=output.map" )
+SET(CMAKE_EXE_LINKER_FLAGS "-lm ${ARCH_FLAGS} --specs=nano.specs --specs=nosys.specs -Wl,--gc-sections,-Map=output.map" )
 
 set(CMAKE_SYSROOT ${TOOLCHAIN_ROOT}/${TOOLCHAIN_TARGET})
 set(CMAKE_FIND_ROOT_PATH ${TOOLCHAIN_ROOT})
