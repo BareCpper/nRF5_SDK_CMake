@@ -43,5 +43,6 @@ else() # Download SDK
 		BUILD_COMMAND ""
 		INSTALL_COMMAND ""
 		#LOG_DOWNLOAD ON
-		EXCLUDE_FROM_ALL ON)
+		EXCLUDE_FROM_ALL ON
+        )
 endif()

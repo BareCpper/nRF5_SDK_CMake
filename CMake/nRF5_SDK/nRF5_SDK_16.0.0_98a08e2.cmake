@@ -78,5 +78,7 @@ PUBLIC
 	${BOARD}
 )
 
+
 get_target_property(nRF5_SDK_SOURCE_FILES nRF5_SDK SOURCES)
-set_source_files_properties( ${nRF5_SDK_SOURCE_FILES} PROPERTIES GENERATED 1)
+#message( "nRF5_SDK sources: ${nRF5_SDK_SOURCE_FILES}"  )
+set_source_files_properties( ${nRF5_SDK_SOURCE_FILES} PROPERTIES GENERATED TRUE)

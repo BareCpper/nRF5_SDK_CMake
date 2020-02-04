@@ -38,3 +38,7 @@ target_link_libraries( ${softdevice_ID}
 INTERFACE
 	${BOARD} 
 )
+
+add_dependencies( ${softdevice_ID} 
+    nRF5_SDK_Get
+)

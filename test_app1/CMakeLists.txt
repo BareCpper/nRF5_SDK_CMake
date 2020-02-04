@@ -29,3 +29,6 @@ create_hex( test_app1 )
 add_flash_target( test_app1 )
 
 # TODO: Add tests and install targets if needed.
+
+target_compile_definitions(test_app1 PUBLIC "$<$<CONFIG:Debug>:MYDEBUG_MACRO>")
+target_compile_definitions(test_app1 PUBLIC "$<$<CONFIG:Release>:MYDEBUG_MACRO>")

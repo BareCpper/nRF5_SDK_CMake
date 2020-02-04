@@ -30,6 +30,10 @@ target_link_libraries( nrf52832_xxAA
 		${nrf52832_xxAA_ARCH}
 )
 
+add_dependencies( nrf52832_xxAA 
+	nRF5_SDK_Get # gcc_startup_nrf52.S
+)
+
 target_compile_definitions(nrf52832_xxAA
 	PUBLIC
 		NRF52
@@ -38,6 +42,9 @@ target_compile_definitions(nrf52832_xxAA
 		FLOAT_ABI_HARD
 )
 
+
 get_target_property(nrf52832_xxAA_SOURCE_FILES nrf52832_xxAA SOURCES)
-set_source_files_properties( ${nrf52832_xxAA_SOURCE_FILES} PROPERTIES GENERATED 1)
+get_filename_component(nrf52832_xxAA_SOURCE_FILES ${nrf52832_xxAA_SOURCE_FILES} ABSOLUTE)
+#message( "nrf52832_xxAA sources: ${nrf52832_xxAA_SOURCE_FILES}"  )
+set_source_files_properties( ${nrf52832_xxAA_SOURCE_FILES} PROPERTIES GENERATED TRUE)
 

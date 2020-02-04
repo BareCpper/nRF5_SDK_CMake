@@ -1,0 +1,8 @@
+# Setup:
+1) Verify/Install SEGGER Jlink
+2) Add Path to 'Segger JLink' to environment PATH i.e. "C:\Program Files (x86)\SEGGER\JLink"
+
+# Start GDB Server:
+```
+JLinkGDBServerCL.exe -select USB -device nRF52832_xxAA -endian little -if SWD -speed 4000 -noir -LocalhostOnly
+```
