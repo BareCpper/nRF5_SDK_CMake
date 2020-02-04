@@ -1,0 +1,50 @@
+{
+  "version": "0.2.1",
+  "defaults": {},
+  "configurations": [
+    {
+      "type": "cppdbg",
+      "name": "Debug:TestApp1",
+      "project": "CMakeLists.txt",
+      "cwd": "${workspaceRoot}",
+      "program": "${workspaceRoot}\\out\\build\\ARM-Debug\\test_app1\\test_app1",
+      "MIMode": "gdb",
+      "externalConsole": true,
+      "miDebuggerPath": "C:\\Program Files (x86)\\GNU Tools Arm Embedded\\9 2019-q4-major\\bin\\arm-none-eabi-gdb.exe",
+      "setupCommands": [
+        {
+          "text": "Documentation: Learn how to configure embedded debugging",
+          "description": "See here for more info http://aka.ms/vsembeddeddebug",
+          "ignoreFailures": true
+        },
+        {
+          "text": "-environment-cd ${workspaceRoot}/out/build"
+        },
+        {
+          "text": "-file-exec-and-symbols ./ARM-Debug/test_app1/test_app1",
+          "description": "load file",
+          "ignoreFailures": false
+        },
+        {
+          "text": "-enable-pretty-printing",
+          "ignoreFailures": true
+        }
+      ],
+      "visualizerFile": "${debugInfo.linuxNatvisPath}",
+      "showDisplayString": true,
+      "miDebuggerServerAddress": "localhost:2331",
+      "launchCompleteCommand": "None",
+      "debugServerPath": "JLinkGDBServerCL.exe",
+      "debugServerArgs": "-select USB -device nRF52832_xxAA -endian little -if SWD -speed 10000 -noir -LocalhostOnly",
+      "serverStarted": "Connecting to target...Connected to target",
+      "filterStderr": true,
+      "filterStdout": true
+    },
+    {
+      "type": "default",
+      "project": "CMakeLists.txt",
+      "projectTarget": "test_app1 (test_app1\\test_app1)",
+      "name": "test_app1 (test_app1\\test_app1)"
+    }
+  ]
+}

@@ -47,7 +47,8 @@ out/
 *.exe
 
 # VC directories
-.vs
+.vs/*
+!.vs/*.vs.json
 Debug
 Release
 *.out

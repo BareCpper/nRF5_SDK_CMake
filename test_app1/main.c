@@ -22,7 +22,7 @@ int main(void)
 		for (int i = 0; i < LEDS_NUMBER; i++)
 		{
 			bsp_board_led_invert(i);
-			nrf_delay_ms(200);
+			nrf_delay_ms(50);
 		}
 	}
 }
